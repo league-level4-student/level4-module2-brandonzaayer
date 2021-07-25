@@ -43,8 +43,22 @@ public class StringMethods {
 	// if String s contains the word "underscores", change all of the spaces to
 	// underscores
 	public static String formatSpaces(String s) {
-		
-		return null;
+		String noScores = "";
+		for (int i = 0; i < s.length(); i++) {
+			if(s.contains("underscores")) {
+				if(s.charAt(i) == ' ') {
+					noScores = noScores + "_";
+				}
+				else {
+					noScores = noScores + s.charAt(i);
+				}
+			}
+			else {
+				noScores = noScores + s.charAt(i);
+			}
+		}
+		System.out.println(noScores);
+		return noScores;
 	}
 
 	// Return the name of the person whose LAST name would appear first if they were
@@ -52,6 +66,9 @@ public class StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
+		for (int i = 0; i < s1.length(); i++) {
+			//idk how to start this one i'm skipping it for now
+		}
 		return null;
 	}
 
@@ -62,7 +79,16 @@ public class StringMethods {
 
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		return 0;
+		int count = 0;
+		int repeat = substring.length();
+		int plusOne = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if(s.charAt(i) == substring.charAt(plusOne)) {
+				while
+				count++;
+			}
+		}
+		return count;
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
@@ -94,13 +120,13 @@ public class StringMethods {
 	public static boolean palindrome(String s) {
 		String forward = "";
 		for (int i = s.length()-1; i >= 0; i--) {
-			if (s.charAt(i) != ' ' && Character.isLetter(i)) {
+			if (s.charAt(i) != ' ' && s.charAt(i) != '?' && s.charAt(i) != ',' && s.charAt(i) != ':' && s.charAt(i) != '.') {
 				forward = forward + s.charAt(i);
 			}
 		}
 		String noSpaces = "";
 		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) != ' ' && Character.isLetter(i)) {
+			if (s.charAt(i) != ' ' && s.charAt(i) != '?' && s.charAt(i) != ',' && s.charAt(i) != ':' && s.charAt(i) != '.') {
 				noSpaces = noSpaces + s.charAt(i);
 			}
 		}
