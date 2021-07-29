@@ -32,10 +32,9 @@ public class StringMethods {
 
 	// Given Strings s1 and s2, return the longer String
 	public static String longerString(String s1, String s2) {
-		if(s1.length() > s2.length()) {
+		if (s1.length() > s2.length()) {
 			return s1;
-		}
-		else {
+		} else {
 			return s2;
 		}
 	}
@@ -45,15 +44,13 @@ public class StringMethods {
 	public static String formatSpaces(String s) {
 		String noScores = "";
 		for (int i = 0; i < s.length(); i++) {
-			if(s.contains("underscores")) {
-				if(s.charAt(i) == ' ') {
+			if (s.contains("underscores")) {
+				if (s.charAt(i) == ' ') {
 					noScores = noScores + "_";
-				}
-				else {
+				} else {
 					noScores = noScores + s.charAt(i);
 				}
-			}
-			else {
+			} else {
 				noScores = noScores + s.charAt(i);
 			}
 		}
@@ -67,7 +64,7 @@ public class StringMethods {
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
 		for (int i = 0; i < s1.length(); i++) {
-			//idk how to start this one i'm skipping it for now
+			// idk how to start this one i'm skipping it for now
 		}
 		return null;
 	}
@@ -79,16 +76,30 @@ public class StringMethods {
 
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
+		//im stuck on this one
 		int count = 0;
-		int repeat = substring.length();
-		int plusOne = 0;
-		for (int i = 0; i < s.length(); i++) {
-			if(s.charAt(i) == substring.charAt(plusOne)) {
-				while
-				count++;
+		if (s.contains(substring)) {
+			for (int i = 0; i < s.length(); i++) {
+				if (s.charAt(i) == substring.charAt(0)) {
+					if (substring.length() > 1) {
+						for (int j = 1; j < substring.length(); j++) {
+							if (i <= s.length() - 3) {
+								if (s.charAt(i + j) == substring.charAt(j)) {
+									if (s.charAt(i + 2) == substring.charAt(j + 1)) {
+										count++;
+									}
+								}
+							}
+						}
+					} else {
+						count++;
+					}
+				}
 			}
+			return count;
+		} else {
+			return 0;
 		}
-		return count;
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
@@ -119,14 +130,16 @@ public class StringMethods {
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
 		String forward = "";
-		for (int i = s.length()-1; i >= 0; i--) {
-			if (s.charAt(i) != ' ' && s.charAt(i) != '?' && s.charAt(i) != ',' && s.charAt(i) != ':' && s.charAt(i) != '.') {
+		for (int i = s.length() - 1; i >= 0; i--) {
+			if (s.charAt(i) != ' ' && s.charAt(i) != '?' && s.charAt(i) != ',' && s.charAt(i) != ':'
+					&& s.charAt(i) != '.') {
 				forward = forward + s.charAt(i);
 			}
 		}
 		String noSpaces = "";
 		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) != ' ' && s.charAt(i) != '?' && s.charAt(i) != ',' && s.charAt(i) != ':' && s.charAt(i) != '.') {
+			if (s.charAt(i) != ' ' && s.charAt(i) != '?' && s.charAt(i) != ',' && s.charAt(i) != ':'
+					&& s.charAt(i) != '.') {
 				noSpaces = noSpaces + s.charAt(i);
 			}
 		}
@@ -137,22 +150,22 @@ public class StringMethods {
 		}
 	}
 
-static class Utilities {
-	// This basic encryption scheme is called single-byte xor. It takes a single
-	// byte and uses exclusive-or on every character in the String.
-	public static String encrypt(byte[] plaintext, byte key) {
-		for (int i = 0; i < plaintext.length; i++) {
-			plaintext[i] = (byte) (plaintext[i] ^ key);
+	static class Utilities {
+		// This basic encryption scheme is called single-byte xor. It takes a single
+		// byte and uses exclusive-or on every character in the String.
+		public static String encrypt(byte[] plaintext, byte key) {
+			for (int i = 0; i < plaintext.length; i++) {
+				plaintext[i] = (byte) (plaintext[i] ^ key);
+			}
+			return Base64.getEncoder().encodeToString(plaintext);
 		}
-		return Base64.getEncoder().encodeToString(plaintext);
-	}
 
-	public static String decrypt(String cyphertext, byte key) {
-		byte[] b = Base64.getDecoder().decode(cyphertext);
-		for (int i = 0; i < b.length; i++) {
-			b[i] = (byte) (b[i] ^ key);
+		public static String decrypt(String cyphertext, byte key) {
+			byte[] b = Base64.getDecoder().decode(cyphertext);
+			for (int i = 0; i < b.length; i++) {
+				b[i] = (byte) (b[i] ^ key);
+			}
+			return new String(b);
 		}
-		return new String(b);
 	}
-}
 }
