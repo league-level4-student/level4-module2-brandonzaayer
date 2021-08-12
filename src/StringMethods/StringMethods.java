@@ -63,15 +63,46 @@ public class StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
+		//finding last name
 		for (int i = 0; i < s1.length(); i++) {
-			// idk how to start this one i'm skipping it for now
+			if(i >= 1 && i <= s1.length()-1) {
+				if(s1.charAt(i) == ' ') {
+					if(Character.isLetter(s1.charAt(i-1)) && Character.isLetter(s1.charAt(i+1))) {
+						String lastName1 = s1.charAt(i+1) + "";
+					}
+				}
+			}
+		}
+		for (int i = 0; i < s2.length(); i++) {
+			if(i >= 1 && i <= s2.length()-1) {
+				if(s1.charAt(i) == ' ') {
+					if(Character.isLetter(s2.charAt(i-1)) && Character.isLetter(s2.charAt(i+1))) {
+						String lastName2 = s2.charAt(i+1) + "";
+					}
+				}
+			}
+		}
+		for (int i = 0; i < s3.length(); i++) {
+			if(i >= 1 && i <= s3.length()-1) {
+				if(s3.charAt(i) == ' ') {
+					if(Character.isLetter(s3.charAt(i-1)) && Character.isLetter(s3.charAt(i+1))) {
+						String lastName3 = s3.charAt(i+1) + "";
+					}
+				}
+			}
 		}
 		return null;
 	}
 
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-		return 0;
+		int total = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if(Character.isDigit(s.charAt(i))) {
+				total += Character.getNumericValue(s.charAt(i));
+			}
+		}
+		return total;
 	}
 
 	// Return the number of times String substring appears in String s
