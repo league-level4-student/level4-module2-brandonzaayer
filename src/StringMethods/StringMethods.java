@@ -121,7 +121,7 @@ public class StringMethods {
 
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		//im stuck on this one
+		//i know how to do it now indexOf
 		int count = 0;
 		if (s.contains(substring)) {
 			for (int i = 0; i < s.length(); i++) {
