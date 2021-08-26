@@ -125,27 +125,14 @@ public class StringMethods {
 		int count = 0;
 		if (s.contains(substring)) {
 			for (int i = 0; i < s.length(); i++) {
-				if (s.charAt(i) == substring.charAt(0)) {
-					if (substring.length() > 1) {
-						for (int j = 1; j < substring.length(); j++) {
-							if (i <= s.length() - 3) {
-								if (s.charAt(i + j) == substring.charAt(j)) {
-									if (s.charAt(i + 2) == substring.charAt(j + 1)) {
-										count++;
-									}
-								}
-							}
-						}
-					} else {
-						count++;
-					}
+				if(s.indexOf(substring) > -1) {
+					
+					
+				}
 				}
 			}
 			return count;
-		} else {
-			return 0;
 		}
-	}
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
