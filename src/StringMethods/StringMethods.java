@@ -151,6 +151,7 @@ public class StringMethods {
 			}
 		}
 		return count;
+		
 	}
 
 	// Given String s, return the number of characters between the first occurrence
