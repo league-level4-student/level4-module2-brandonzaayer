@@ -63,48 +63,46 @@ public class StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
-		//finding last name
+		// finding last name
 		String lastName1 = "";
 		String lastName2 = "";
 		String lastName3 = "";
 		for (int i = 0; i < s1.length(); i++) {
-			if(i >= 1 && i <= s1.length()-1) {
-				if(s1.charAt(i) == ' ') {
-					if(Character.isLetter(s1.charAt(i-1)) && Character.isLetter(s1.charAt(i+1))) {
-						lastName1 = s1.charAt(i+1) + "";
+			if (i >= 1 && i < s1.length() - 1) {
+				if (s1.charAt(i) == ' ') {
+					if (Character.isLetter(s1.charAt(i - 1)) && Character.isLetter(s1.charAt(i + 1))) {
+						lastName1 = s1.charAt(i + 1) + "";
 					}
 				}
 			}
 		}
 		for (int i = 0; i < s2.length(); i++) {
-			if(i >= 1 && i <= s2.length()-1) {
-				if(s1.charAt(i) == ' ') {
-					if(Character.isLetter(s2.charAt(i-1)) && Character.isLetter(s2.charAt(i+1))) {
-						lastName2 = s2.charAt(i+1) + "";
+			if (i >= 1 && i < s2.length() - 1) {
+				if (s2.charAt(i) == ' ') {
+					if (Character.isLetter(s2.charAt(i - 1)) && Character.isLetter(s2.charAt(i + 1))) {
+						lastName2 = s2.charAt(i + 1) + "";
 					}
 				}
 			}
 		}
 		for (int i = 0; i < s3.length(); i++) {
-			if(i >= 1 && i <= s3.length()-1) {
-				if(s3.charAt(i) == ' ') {
-					if(Character.isLetter(s3.charAt(i-1)) && Character.isLetter(s3.charAt(i+1))) {
-						lastName3 = s3.charAt(i+1) + "";
+			if (i >= 1 && i < s3.length() - 1) {
+				if (s3.charAt(i) == ' ') {
+					if (Character.isLetter(s3.charAt(i - 1)) && Character.isLetter(s3.charAt(i + 1))) {
+						lastName3 = s3.charAt(i + 1) + "";
 					}
 				}
 			}
 		}
-		if(lastName1.compareTo(lastName2) < 0 && lastName1.compareTo(lastName3) < 0) {
+		if (lastName1.compareTo(lastName2) < 0 && lastName1.compareTo(lastName3) < 0) {
 			System.out.println(lastName1);
-			return s1;
-		}
-		else if(lastName2.compareTo(lastName1) < 0 && lastName2.compareTo(lastName3) < 0) {
+			return s1.trim();
+		} else if (lastName2.compareTo(lastName1) < 0 && lastName2.compareTo(lastName3) < 0) {
 			System.out.println(lastName2);
-			return s2;
-		}
-		else {
+			return s2.trim();
+		} else {
 			System.out.println(lastName3);
-			return s3;
+			return s3.trim();
 		}
 	}
 
@@ -112,7 +110,7 @@ public class StringMethods {
 	public static int numeralSum(String s) {
 		int total = 0;
 		for (int i = 0; i < s.length(); i++) {
-			if(Character.isDigit(s.charAt(i))) {
+			if (Character.isDigit(s.charAt(i))) {
 				total += Character.getNumericValue(s.charAt(i));
 			}
 		}
@@ -121,18 +119,16 @@ public class StringMethods {
 
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		//i know how to do it now indexOf
 		int count = 0;
+		int starting = s.indexOf(substring);
 		if (s.contains(substring)) {
-			for (int i = 0; i < s.length(); i++) {
-				if(s.indexOf(substring) > -1) {
-					
-					
-				}
-				}
+			while (starting != -1) {
+				count++;
+				starting = s.indexOf(substring, starting + 1);
 			}
-			return count;
 		}
+		return count;
+	}
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
@@ -147,14 +143,27 @@ public class StringMethods {
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
+		String[] words = s.split(" ");
+		int count = 0;
+		for(int i = 0; i < words.length; i++) {
+			if(words[i].endsWith(substring)) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	// Given String s, return the number of characters between the first occurrence
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		return 0;
+		int count = 0;
+		int starting = s.indexOf(substring);
+		if (s.contains(substring)) {
+			while (starting != -1) {
+				//if(s.gs.indexOf(substring))
+			}
+		}return 0;
 	}
 
 	// Return true if String s is a palindrome
