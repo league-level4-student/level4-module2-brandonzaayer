@@ -132,12 +132,12 @@ public class StringMethods {
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
-		return null;
+		return Utilities.encrypt(s.getBytes(), (byte) key);
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
-		return null;
+		return Utilities.decrypt(s, (byte) key);
 	}
 
 	// Return the number of words in String s that end with String substring
@@ -158,13 +158,9 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		int count = 0;
-		int starting = s.indexOf(substring);
-		if (s.contains(substring)) {
-			while (starting != -1) {
-				//if(s.gs.indexOf(substring))
-			}
-		}return 0;
+		int first = s.indexOf(substring) + substring.length();
+		int last = s.lastIndexOf(substring);
+		return last - first;
 	}
 
 	// Return true if String s is a palindrome
